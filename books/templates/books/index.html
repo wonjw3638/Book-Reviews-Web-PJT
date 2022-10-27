@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1 class = 'mt-5 fw-bold'> 📚 Book Reviews </h1>
+<a href="{% url 'books:new' %}" class = "col-2 fs-5 text-decoration-none fw-bold text-primary text-opacity-75 my-3">NEW BOOK > </a>
+<hr>
+<div class="row row-cols-2 row-cols-lg-4 g-4 my-0">
+  {% for book in books %}
+    <div class="col my-1">
+      <div class="card h-100 border border-0">
+        <img src="{{book.poster_url}}" class="card-img-top my-2 rounded rounded-3" alt="{{movoe.title}}" style = "height : 27rem;">
+        <div class="card-body">
+          <h5 class="card-title"><a href="{% url 'books:detail' book.pk%}" class = "text-decoration-none fw-bold text-dark">{{book.title}}</a></h5>
+          <span class="badge rounded-pill text-bg-warning ">❤ {{book.score}}</span>
+          <span class="badge rounded-pill text-bg-primary ">{{book.genre}}</span>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% endblock content %}

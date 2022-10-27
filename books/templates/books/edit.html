@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1 class = 'my-2 fw-bold'>EDIT</h1>
+  <hr class = 'my-3'>
+  <form action="{% url "books:update" book.pk%}" method="POST">
+    {% csrf_token %}
+
+    <div class="row container">
+      {% include 'books/edit/_title.html' %}
+      {% include 'books/edit/_author.html' %}
+      {% include 'books/edit/_country.html' %}
+      {% include 'books/edit/_genre.html' %}
+      {% include 'books/edit/_score.html' %}
+      {% include 'books/edit/_poster_url.html' %}
+      {% include 'books/edit/_description.html' %}
+  </div>
+
+  <div>
+    <button class="btn btn-primary fw-bold mx-1 btn-sm" type="submit">SUBMIT</button>
+    <button class="btn btn-warning fw-bold mx-1 btn-sm" type="reset">RESET</button>
+  </div>
+
+  </form>
+  <hr class = 'my-3'>
+  <div class="">
+    <a href="{% url "books:index" %}" class="fw-bold btn btn-outline-secondary btn-sm">BACK</a>
+  </div>
+  
+{% endblock content %}

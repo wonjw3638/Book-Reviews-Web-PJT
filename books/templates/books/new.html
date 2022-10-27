@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1 class = 'my-2 fw-bold'>NEW</h1>
+  <hr class = 'my-3'>
+  <form action="{% url "books:create" %}" method="POST">
+    {% csrf_token %}
+      <div class="row container">
+        {% include 'books/new/_title.html' %}
+        {% include 'books/new/_author.html' %}
+        {% include 'books/new/_country.html' %}
+        {% include 'books/new/_genre.html' %}
+        {% include 'books/new/_score.html' %}
+        {% include 'books/new/_poster_url.html' %}
+        {% include 'books/new/_description.html' %}
+    </div>
+    <button class="btn btn-primary fw-bold mx-2 btn-sm" type="submit">SUBMIT</button>
+  </form>
+  
+  <hr class = 'my-3'>
+  <div class="col">
+    <div class="row-3 mx-2"><a href="{% url "books:index" %}" class="fw-bold btn btn-outline-secondary btn-sm">BACK</a></div>
+  </div>
+  {% endblock content %}
